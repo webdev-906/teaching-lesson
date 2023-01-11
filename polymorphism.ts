@@ -1,3 +1,7 @@
+// When multiple classes inherit from a parent and override the same functionality, the result is polymorphism. Each of those child classes now implements a property or method, but they each may have their own way of performing that implementation.
+
+
+// blue print of Animal
 class Animal {
   animalName: string 
   animalType: string 
@@ -9,7 +13,7 @@ class Animal {
 
   }
 
-  // behaviors
+  // behaviors / methods
   makeSound(): string {
     return `${this.animalName} made a sound`
   }
@@ -20,14 +24,24 @@ class Animal {
   
 }
 
+
 class Dog extends Animal {
   constructor(animalName: string, animalType: string){
     super(animalName, animalType)
   }
-  makeSound(): string {
-      return `${this.animalName} barked!`
+}
+
+class Cat extends Animal {
+  constructor(animalName: string, animalType: string){
+    super(animalName, animalType)
   }
 }
 
+// instance of dog that inherits makeSound 
 const dog1 = new Dog('Jazz', 'Dog')
 console.log(dog1.makeSound())
+
+
+// instance of cat that inherits makeSound 
+const cat1 = new Cat('Blu', 'Cat')
+console.log(cat1.makeSound())

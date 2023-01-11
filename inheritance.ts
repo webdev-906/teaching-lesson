@@ -14,6 +14,10 @@ class Parent{
     return `${this.parentName} is working`
   }
 
+  speaking(): string {
+    return `${this.parentName} is speaking`
+  }
+
   
 }
 

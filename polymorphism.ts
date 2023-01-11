@@ -1,5 +1,3 @@
-
-
 class Animal {
   animalName: string 
   animalType: string 

@@ -1,27 +1,34 @@
-class Person {
-  constructor(private firstName: string, private lastName: string) {
-      this.firstName = firstName;
-      this.lastName = lastName;
+
+
+class Parent{
+  parentName: string
+  parentGender: string
+
+  constructor(parentName: string, parentGender: string){
+    this.parentName = parentName
+    this.parentGender = parentGender
+
   }
-  getFullName(): string {
-      return `${this.firstName} ${this.lastName}`;
+
+  working(): string {
+    return `${this.parentName} is working`
   }
-  describe(): string {
-      return `This is ${this.firstName} ${this.lastName}.`;
+
+  
+}
+
+class Child extends Parent {
+  constructor(parentName: string, parentGender: string){
+    super(parentName, parentGender)
+  }
+
+  childsParent():string {
+    return `This child's parent's name is ${this.parentName}`
   }
 }
 
-class Employee extends Person {
-  constructor(
-      firstName: string,
-      lastName: string,
-      private jobTitle: string) {
-      
-      // call the constructor of the Person class:
-      super(firstName, lastName);
-  }
-}
+let parent1 = new Parent ('Shelly', 'Female');
+console.log(parent1.working())
 
-let employee = new Employee('John','Doe','Front-end Developer');
-console.log(employee.getFullName());
-console.log(employee.describe());
+let child1 = new Child('Lisa', 'Female');
+console.log(child1.childsParent())

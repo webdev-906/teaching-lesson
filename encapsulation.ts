@@ -1,22 +1,26 @@
-// encapsulation example 
-class BankAccount {
+class Person {
+  fullName: string
+  age: number 
+  jobTitle: string 
 
-  public minimumBalance: number;
-
-  get balance(): number {
-    return this._balance;
-  }
-  private _balance: number;
-
-  deposit(amount: number): number {
-    this._balance = this._balance + amount;
-    return this._balance;
+  // blueprint or properties
+  constructor(fullName: string, age: number, jobTitle: string){
+    this.fullName = fullName
+    this.age = age
+    this.jobTitle = jobTitle
   }
 
-  withdraw(amount: number): number {
-    if (amount <= this.minimumBalance) {
-      this._balance = this._balance - amount;
-      return this._balance;
-    }
+  // behaviors of blueprint
+  greeting(): string {
+    return `${this.fullName} says hello...`
+  }
+
+  currentRole(): string{
+    return `${this.fullName} is ${this.age} and is a ${this.jobTitle}`
   }
 }
+// initializing our person 
+const person = new Person('John Pace', 56, 'Network Engineer');
+console.log(person.currentRole())
+
+

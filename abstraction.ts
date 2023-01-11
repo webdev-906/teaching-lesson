@@ -1,33 +1,26 @@
-// Abstraction 
-abstract class Person {
-  name: string;
-  
-  constructor(name: string) {
-      this.name = name;
+// You cannot create a new object from it with abstract
+abstract class Employee {
+  constructor(private firstName: string, private lastName: string) {
   }
-
-  display(): void{
-      console.log(this.name);
+  abstract getSalary(): number
+  get fullName(): string {
+      return `${this.firstName} ${this.lastName}`;
   }
-
-  abstract find(string): Person;
-}
-
-class Employee extends Person { 
-  empCode: number;
-  
-  constructor(name: string, code: number) { 
-      super(name); // must call super()
-      this.empCode = code;
-  }
-
-  find(name:string): Person { 
-      // execute AJAX request to find an employee from a db
-      return new Employee(name, 1);
+  compensationStatement(): string {
+      return `${this.fullName} makes ${this.getSalary()} a month.`;
   }
 }
 
-let emp: Person = new Employee("James", 100);
-emp.display(); //James
+// let employee = new Employee('John','Doe'); // Cannot create an instance of an abstract class
 
-let emp2: Person = emp.find('Steve');
+class FullTimeEmployee extends Employee {
+  constructor(firstName: string, lastName: string, private salary: number) {
+      super(firstName, lastName);
+  }
+  getSalary(): number {
+      return this.salary;
+  }
+}
+
+let john = new FullTimeEmployee('John', 'Doe', 12000);
+console.log(john.compensationStatement());
